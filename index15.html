@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="uz" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ASTORE ELECTRONICS — Rasmiy Onlayn Do'kon | Noutbuklar, Smartfonlar va Aksessuarlar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.25s ease, color 0.25s ease; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .glass-header {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body class="bg-[#F4F7F9] text-[#0F172A] dark:bg-[#060911] dark:text-[#F8FAFC] min-h-screen flex flex-col">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 glass-header bg-white/90 dark:bg-[#060911]/90 border-b border-slate-200/80 dark:border-slate-800/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Brand Logo (ASTORE ELECTRONICS) -->
+      <a href="#" onclick="resetFilters(); return false;" class="flex items-center gap-2.5 group shrink-0">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-slate-900 dark:bg-emerald-500/15 border border-slate-800 dark:border-emerald-500/30 flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+          <svg class="w-6 h-6 text-emerald-400" viewBox="0 0 32 32" fill="none">
+            <path d="M16 4V14" stroke="#10B981" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M9.5 7.5C6.7 9.6 5 12.9 5 16.5C5 22.6 9.9 27.5 16 27.5C22.1 27.5 27 22.6 27 16.5C27 12.9 25.3 9.6 22.5 7.5" stroke="#10B981" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="leading-none">
+          <div class="flex items-center font-black text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
+            <span>AST</span>
+            <span class="inline-flex items-center justify-center mx-[1px]">
+              <svg class="w-4 h-4 sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2.5V10.5" stroke="#10B981" stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M7.2 5.4C5.2 6.9 4 9.3 4 12C4 16.4 7.6 20 12 20C16.4 20 20 16.4 20 12C20 9.3 18.8 6.9 16.8 5.4" stroke="#10B981" stroke-width="3.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>RE</span>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-emerald-600 dark:text-emerald-400 uppercase block mt-0.5">ELECTRONICS</span>
+        </div>
+      </a>
+
+      <!-- Desktop Search -->
+      <div class="hidden md:flex flex-1 max-w-md relative">
+        <input id="searchInputDesktop" type="text" oninput="handleSearch(this.value)" placeholder="iPhone 15 Pro, Power Bank, MacBook..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+
+      <!-- Header Controls -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button onclick="toggleTheme()" aria-label="Mavzuni o'zgartirish" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-amber-400 border border-slate-200 dark:border-slate-700 transition">
+          <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <button onclick="openAdminModal()" class="p-2 sm:px-3.5 sm:py-2 rounded-xl bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="hidden lg:inline">Do'kon egasi</span>
+        </button>
+
+        <button onclick="openCart()" class="relative flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition active:scale-95">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <span class="hidden sm:inline">Savat</span>
+          <span id="cartCountBadge" class="px-1.5 py-0.5 text-[11px] font-extrabold bg-white text-emerald-700 rounded-full leading-none">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Search -->
+    <div class="md:hidden px-3 pb-3">
+      <div class="relative">
+        <input id="searchInputMobile" type="text" oninput="handleSearch(this.value)" placeholder="Mahsulot yoki model qidirish..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5 sm:py-7">
+
+    <!-- Hero Banner (Siz yuborgan aniq ASTORE ELECTRONICS do'kon rasmi) -->
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 text-white p-5 sm:p-8 mb-6 shadow-xl border border-slate-800/90">
+      <div class="absolute -right-20 -top-20 w-72 h-72 bg-emerald-500/25 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-teal-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold mb-3.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>ASTORE ELECTRONICS (@astore_uz) • Qo'qon Showroom</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight mb-3">
+            Eng so‘nggi flagman smartfonlar va kuchli noutbuklar markazi
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base mb-5 leading-relaxed max-w-xl">
+            Barcha gadjetlar, original smartfonlar, noutbuklar va aksessuarlar 100% kafolat bilan. Katalogdan o‘zingizga mos texnikani tanlang va band qiling.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/25 active:scale-95">
+              Katalogni ko'rish
+            </button>
+            <div class="flex items-center gap-4 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-xs">
+              <div><span class="text-emerald-400 font-black">100%</span> Original</div>
+              <div class="w-px h-4 bg-white/15"></div>
+              <div><span class="text-emerald-400 font-black">1 Yil</span> Kafolat</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Siz yuborgan do'koningizning aniq SVG vektorli profesional nusxasi (100% ishlaydi, hech qachon o'chmaydi) -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-slate-900 aspect-[16/10] flex items-center justify-center">
+            <svg class="w-full h-full object-cover" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="facadeGrad" x1="0" y1="35" x2="800" y2="180" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D6D3D1"/>
+                  <stop offset="0.5" stop-color="#F5F5F4"/>
+                  <stop offset="1" stop-color="#D6D3D1"/>
+                </linearGradient>
+                <linearGradient id="glassReflect" x1="85" y1="195" x2="715" y2="450" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFFFFF" stop-opacity="0.18"/>
+                  <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.02"/>
+                  <stop offset="1" stop-color="#10B981" stop-opacity="0.08"/>
+                </linearGradient>
+              </defs>
+
+              <rect width="800" height="500" fill="#1E293B"/>
+              <rect x="0" y="0" width="800" height="32" fill="#E2E8F0"/>
+              
+              <!-- Facade Wall -->
+              <rect x="0" y="32" width="800" height="150" fill="url(#facadeGrad)"/>
+              <rect x="0" y="182" width="75" height="273" fill="#475569"/>
+              <rect x="725" y="182" width="75" height="273" fill="#475569"/>
+              <line x1="25" y1="182" x2="25" y2="455" stroke="#334155" stroke-width="4"/>
+              <line x1="48" y1="182" x2="48" y2="455" stroke="#334155" stroke-width="4"/>
+              <line x1="752" y1="182" x2="752" y2="455" stroke="#334155" stroke-width="4"/>
+              <line x1="775" y1="182" x2="775" y2="455" stroke="#334155" stroke-width="4"/>
+
+              <!-- Green Accent Bars -->
+              <rect x="0" y="28" width="135" height="9" rx="2" fill="#22C55E"/>
+              <rect x="615" y="168" width="185" height="9" rx="2" fill="#22C55E"/>
+              
+              <!-- ASTORE Sign with Green Power O -->
+              <text x="403" y="114" text-anchor="middle" fill="#94A3B8" font-family="Inter, sans-serif" font-weight="900" font-size="68" letter-spacing="8">ASTORE</text>
+              <text x="400" y="111" text-anchor="middle" fill="#18181B" font-family="Inter, sans-serif" font-weight="900" font-size="68" letter-spacing="8">AST<tspan fill="#22C55E">O</tspan>RE</text>
+              <text x="400" y="148" text-anchor="middle" fill="#18181B" font-family="Inter, sans-serif" font-weight="800" font-size="22" letter-spacing="14">ELECTRONICS</text>
+              
+              <!-- Storefront Glass Frame -->
+              <rect x="75" y="182" width="650" height="273" fill="#0F172A" stroke="#334155" stroke-width="8"/>
+              <rect x="83" y="190" width="634" height="257" fill="#F1F5F9"/>
+              <polygon points="83,190 717,190 615,248 185,248" fill="#94A3B8"/>
+              <polygon points="235,198 565,198 525,235 275,235" fill="#86EFAC" stroke="#22C55E" stroke-width="3"/>
+              
+              <circle cx="295" cy="216" r="5" fill="#FFFFFF"/>
+              <circle cx="365" cy="216" r="5" fill="#FFFFFF"/>
+              <circle cx="435" cy="216" r="5" fill="#FFFFFF"/>
+              <circle cx="505" cy="216" r="5" fill="#FFFFFF"/>
+
+              <!-- Interior Stands -->
+              <polygon points="90,225 175,248 175,335 90,345" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+              <polygon points="625,248 710,225 710,345 625,335" fill="#1E293B"/>
+              <rect x="305" y="262" width="190" height="54" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+              <rect x="240" y="345" width="95" height="75" rx="4" fill="#FDE68A" stroke="#D97706" stroke-width="1.5"/>
+              <rect x="465" y="340" width="115" height="85" rx="4" fill="#0F172A"/>
+              
+              <rect x="115" y="375" width="32" height="72" fill="#FFFFFF" stroke="#CBD5E1"/>
+              <rect x="165" y="375" width="32" height="72" fill="#FFFFFF" stroke="#CBD5E1"/>
+              <rect x="215" y="375" width="32" height="72" fill="#FFFFFF" stroke="#CBD5E1"/>
+              <rect x="550" y="375" width="32" height="72" fill="#FFFFFF" stroke="#CBD5E1"/>
+              <rect x="605" y="375" width="32" height="72" fill="#FFFFFF" stroke="#CBD5E1"/>
+              <rect x="655" y="375" width="32" height="72" fill="#FFFFFF" stroke="#CBD5E1"/>
+
+              <rect x="83" y="190" width="634" height="257" fill="url(#glassReflect)"/>
+              <line x1="400" y1="190" x2="400" y2="447" stroke="#94A3B8" stroke-width="3"/>
+
+              <!-- Red Granite Steps -->
+              <rect x="175" y="455" width="450" height="20" fill="#7F1D1D"/>
+              <rect x="145" y="475" width="510" height="25" fill="#450A0A"/>
+            </svg>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/50 to-transparent p-3.5 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 block">Qo'qon • Markaziy filial</span>
+                <span class="text-xs sm:text-sm font-black text-white">ASTORE ELECTRONICS</span>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold">Ochiq • 09:00 - 21:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Categories -->
+    <section id="catalogSection" class="mb-6 space-y-3">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="categoryPills">
+        <button onclick="setCategory('all')" data-cat="all" class="cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm">
+          Barchasi (32)
+        </button>
+        <button onclick="setCategory('smartphones')" data-cat="smartphones" class="cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-emerald-500">
+          📱 Smartfonlar
+        </button>
+        <button onclick="setCategory('laptops')" data-cat="laptops" class="cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-emerald-500">
+          💻 Noutbuklar
+        </button>
+        <button onclick="setCategory('tablets')" data-cat="tablets" class="cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-emerald-500">
+          ⌚ Planshet & Soat
+        </button>
+        <button onclick="setCategory('accessories')" data-cat="accessories" class="cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-emerald-500">
+          🎧 Aksessuarlar
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2.5 bg-white dark:bg-slate-900/90 p-3 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="brandPills">
+          <button onclick="setBrand('all')" data-brand="all" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white dark:bg-emerald-500 dark:text-slate-950 transition">Barcha brendlar</button>
+          <button onclick="setBrand('Apple')" data-brand="Apple" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Apple</button>
+          <button onclick="setBrand('Samsung')" data-brand="Samsung" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Samsung</button>
+          <button onclick="setBrand('Redmi')" data-brand="Redmi" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Redmi</button>
+          <button onclick="setBrand('Honor')" data-brand="Honor" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Honor</button>
+          <button onclick="setBrand('HP')" data-brand="HP" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">HP</button>
+          <button onclick="setBrand('ASUS')" data-brand="ASUS" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">ASUS</button>
+          <button onclick="setBrand('Lenovo')" data-brand="Lenovo" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Lenovo</button>
+          <button onclick="setBrand('Acer')" data-brand="Acer" class="brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Acer</button>
+        </div>
+
+        <div class="flex items-center gap-2 ml-auto">
+          <span id="resultsCount" class="text-xs font-semibold text-slate-500 dark:text-slate-400">32 ta mahsulot</span>
+          <select id="sortSelect" onchange="renderProducts()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="featured">Tavsiya etilgan</option>
+            <option value="price-asc">Arzonroqdan qimmatga</option>
+            <option value="price-desc">Qimmatroqdan arzonga</option>
+            <option value="name">Nomi bo'yicha (A-Z)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+      <!-- Injected by JavaScript -->
+    </section>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 mt-4">
+      <div class="text-4xl mb-3">🔍</div>
+      <h3 class="text-lg font-bold mb-1">Hech narsa topilmadi</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Qidiruv so'zini o'zgartirib ko'ring yoki filtrlarni tozalang.</p>
+      <button onclick="resetFilters()" class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm font-bold">Barchasini ko'rsatish</button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800/80 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+      <div>
+        <div class="font-black text-lg text-slate-900 dark:text-white flex items-center gap-1.5 mb-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <span>ASTORE ELECTRONICS</span>
+        </div>
+        <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+          @astore_uz — O'zbekistondagi ishonchli smartfonlar, noutbuklar va original aksessuarlar do'koni. Barcha mahsulotlar rasmiy kafolat bilan taqdim etiladi.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 dark:text-white mb-2">Xizmatlar</h4>
+        <ul class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400">
+          <li>• Rasmiy 1 yillik kafolat va texnik ko'mak</li>
+          <li>• Trade-In: Eski telefoningizni yangisiga almashtirish</li>
+          <li>• Do'kondan olib ketish uchun onlayn band qilish</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 dark:text-white mb-2">Aloqa va Manzil</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">📞 Call-markaz: +998 (90) 123-45-67</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400">📍 Ish vaqti: Har kuni 09:00 dan 21:00 gacha</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-sm">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[92vh] flex flex-col">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 dark:border-slate-800">
+        <span id="modalBrandBadge" class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold uppercase">APPLE</span>
+        <button onclick="closeProductModal()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="overflow-y-auto p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="relative aspect-square rounded-2xl bg-slate-100 dark:bg-slate-800/80 overflow-hidden flex items-center justify-center border border-slate-200/60 dark:border-slate-700/60">
+          <div id="modalImageContainer" class="w-full h-full flex items-center justify-center"></div>
+        </div>
+
+        <div class="flex flex-col justify-between space-y-4">
+          <div>
+            <h2 id="modalTitle" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-snug mb-2"></h2>
+            <div class="flex items-baseline gap-2.5 mb-3">
+              <span id="modalPrice" class="text-2xl font-black text-emerald-600 dark:text-emerald-400"></span>
+              <span class="text-xs font-semibold text-slate-400">so'm</span>
+            </div>
+            <p id="modalSpecs" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 leading-relaxed mb-4"></p>
+            <div class="p-3 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/70 dark:border-emerald-800/50 text-xs text-emerald-800 dark:text-emerald-300 font-medium">
+              ✅ Do'konimizda mavjud • 1 yillik rasmiy kafolat beriladi
+            </div>
+          </div>
+
+          <button id="modalAddToCartBtn" class="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span>Savatga qo'shish</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 hidden justify-end bg-slate-950/70 backdrop-blur-sm">
+    <div class="w-full max-w-md bg-white dark:bg-slate-900 h-full flex flex-col shadow-2xl border-l border-slate-200 dark:border-slate-800">
+      <div class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <h3 class="text-lg font-black flex items-center gap-2">
+          <span>🛒 Savatcha</span>
+          <span id="drawerCartCount" class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold">0</span>
+        </h3>
+        <button onclick="closeCart()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+
+      <div class="p-5 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-500 dark:text-slate-400 font-medium">Jami summa:</span>
+          <span id="cartTotalAmount" class="text-xl font-black text-emerald-600 dark:text-emerald-400">0 so'm</span>
+        </div>
+        <button onclick="openCheckoutModal()" id="checkoutTriggerBtn" disabled class="w-full py-3.5 rounded-2xl bg-emerald-600 disabled:bg-slate-300 dark:disabled:bg-slate-800 disabled:text-slate-500 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition active:scale-95">
+          Buyurtmani rasmiylashtirish
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-sm">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[92vh] overflow-y-auto">
+      <div class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <h3 class="text-lg font-black" id="checkoutModalTitle">Buyurtmani rasmiylashtirish</h3>
+        <button onclick="closeCheckoutModal()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="checkoutForm" onsubmit="submitOrder(event)" class="p-5 space-y-4">
+        <div>
+          <label class="block text-xs font-bold mb-1.5 text-slate-600 dark:text-slate-300">Ism va familiyangiz *</label>
+          <input type="text" id="custName" required placeholder="Masalan: Jasurbek Karimov" class="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1.5 text-slate-600 dark:text-slate-300">Telefon raqamingiz *</label>
+          <input type="tel" id="custPhone" required placeholder="+998 90 123 45 67" class="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1.5 text-slate-600 dark:text-slate-300">To'lov turi</label>
+          <select id="custPayment" class="w-full px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-semibold">
+            <option value="Naqd pul orqali (Do'konda)">Naqd pul orqali (Do'konda)</option>
+            <option value="Plastik karta orqali (Uzcard / Humo)">Plastik karta orqali (Uzcard / Humo)</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-lg transition active:scale-95">
+          Buyurtmani tasdiqlash
+        </button>
+      </form>
+
+      <div id="receiptView" class="hidden p-6 text-center space-y-4">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-3xl">✅</div>
+        <div>
+          <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold">BUYURTMA BAND QILINDI</span>
+          <h4 id="receiptOrderId" class="text-2xl font-black mt-2">#AST-2027</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Operatorimiz tez orada siz bilan bog'lanadi.</p>
+        </div>
+
+        <div id="receiptDetails" class="text-left bg-slate-50 dark:bg-slate-800/70 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-1.5"></div>
+
+        <div class="flex flex-col items-center justify-center pt-1">
+          <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm inline-block">
+            <svg id="receiptQrSvg" class="w-28 h-28" viewBox="0 0 100 100" fill="#0F172A"></svg>
+          </div>
+          <span class="text-[11px] text-slate-400 mt-1.5">ASTORE ELECTRONICS Elektron Chek QR</span>
+        </div>
+
+        <button onclick="closeCheckoutModal()" class="w-full py-3 rounded-2xl bg-slate-900 dark:bg-emerald-600 text-white font-bold text-sm">
+          Do'konga qaytish
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Panel Modal -->
+  <div id="adminModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-sm">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[92vh] flex flex-col">
+      <div class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black">A</span>
+          <div>
+            <h3 class="text-base sm:text-lg font-black">Do'kon egasi boshqaruv paneli</h3>
+            <p class="text-[11px] text-slate-500">Savdo statistikasi, buyurtmalar va inventar</p>
+          </div>
+        </div>
+        <button onclick="closeAdminModal()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="flex border-b border-slate-200 dark:border-slate-800 px-5 gap-4 text-xs sm:text-sm font-bold bg-slate-50 dark:bg-slate-950/40">
+        <button onclick="switchAdminTab('orders')" id="tabBtnOrders" class="py-3 border-b-2 border-emerald-600 text-emerald-600">📦 Buyurtmalar</button>
+        <button onclick="switchAdminTab('stats')" id="tabBtnStats" class="py-3 border-b-2 border-transparent text-slate-500">📊 Statistika</button>
+        <button onclick="switchAdminTab('addProduct')" id="tabBtnAdd" class="py-3 border-b-2 border-transparent text-slate-500">➕ Mahsulot qo'shish</button>
+      </div>
+
+      <div class="p-5 overflow-y-auto flex-1">
+        <div id="adminTabOrders" class="space-y-3">
+          <div id="adminOrdersList" class="space-y-3"></div>
+        </div>
+
+        <div id="adminTabStats" class="hidden space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+              <div class="text-xs text-emerald-700 dark:text-emerald-300 font-bold mb-1">Jami buyurtmalar</div>
+              <div id="statTotalOrders" class="text-2xl font-black text-emerald-800 dark:text-emerald-200">0 ta</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800">
+              <div class="text-xs text-teal-700 dark:text-teal-300 font-bold mb-1">Kassadagi savdo</div>
+              <div id="statTotalRevenue" class="text-2xl font-black text-teal-800 dark:text-teal-200">0 so'm</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <div class="text-xs text-slate-600 dark:text-slate-300 font-bold mb-1">Katalogdagi tovarlar</div>
+              <div id="statTotalProducts" class="text-2xl font-black text-slate-900 dark:text-white">32 ta</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="adminTabAddProduct" class="hidden space-y-4">
+          <form onsubmit="addNewProduct(event)" class="space-y-3">
+            <div>
+              <label class="block text-xs font-bold mb-1">Mahsulot nomi</label>
+              <input type="text" id="newProdName" required placeholder="Masalan: Apple Watch Series 10" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border text-sm" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold mb-1">Kategoriya</label>
+                <select id="newProdCategory" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border text-sm">
+                  <option value="smartphones">Smartfonlar</option>
+                  <option value="laptops">Noutbuklar</option>
+                  <option value="tablets">Planshet & Soat</option>
+                  <option value="accessories">Aksessuarlar</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Brend</label>
+                <input type="text" id="newProdBrand" required placeholder="Apple, Samsung..." class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border text-sm" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold mb-1">Narxi (so'mda raqam)</label>
+                <input type="number" id="newProdPrice" required placeholder="12500000" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">Rasm havolasi (URL)</label>
+                <input type="text" id="newProdImage" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border text-sm" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold mb-1">Xususiyatlari</label>
+              <input type="text" id="newProdSpecs" required placeholder="256GB, OLED, 8GB RAM" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border text-sm" />
+            </div>
+            <button type="submit" class="w-full py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm">Katalogga qo'shish</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const FALLBACK_IMG = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=85";
+
+    // Barcha 32 ta mahsulot bazasi
+    let products = [
+      { id: 1, name: "iPhone 16 Pro Max", brand: "Apple", category: "smartphones", price: 15500000, specs: "256GB, Titanium, A18 Pro chip", image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=85" },
+      { id: 2, name: "Samsung Galaxy S25 Ultra", brand: "Samsung", category: "smartphones", price: 14200000, specs: "512GB, S-Pen, 200MP kamera", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=85" },
+      { id: 3, name: "MacBook Air M3", brand: "Apple", category: "laptops", price: 16500000, specs: "13.6-inch, 16GB RAM, 512GB SSD", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=85" },
+      { id: 4, name: "ASUS ROG Strix G16", brand: "ASUS", category: "laptops", price: 18900000, specs: "Core i9, RTX 4070, 16GB RAM", image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=85" },
+      { id: 5, name: "AirPods Pro 2", brand: "Apple", category: "accessories", price: 2900000, specs: "Shovqinni pasaytirish (ANC), Type-C", image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&auto=format&fit=crop&q=85" },
+      { id: 6, name: "Apple Watch Ultra 2", brand: "Apple", category: "tablets", price: 10500000, specs: "49mm Titanium, GPS + Cellular", image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=600&auto=format&fit=crop&q=85" },
+      { id: 7, name: "iPhone 15 Pro", brand: "Apple", category: "smartphones", price: 12800000, specs: "128GB, Natural Titanium, A17 Pro", image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=85" },
+      { id: 8, name: "Samsung Galaxy Z Fold 6", brand: "Samsung", category: "smartphones", price: 21000000, specs: "512GB, Foldable Screen, AI Assistant", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=85" },
+      { id: 9, name: "Redmi Note 13 Pro+", brand: "Redmi", category: "smartphones", price: 4200000, specs: "256GB, 200MP Camera, 120Hz", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=85" },
+      { id: 10, name: "Honor Magic 6 Pro", brand: "Honor", category: "smartphones", price: 11500000, specs: "512GB, Snapdragon 8 Gen 3, Satellite", image: "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&auto=format&fit=crop&q=85" },
+      { id: 11, name: "HP Victus 15", brand: "HP", category: "laptops", price: 11200000, specs: "Core i5-13420H, RTX 3050, 16GB RAM", image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&auto=format&fit=crop&q=85" },
+      { id: 12, name: "Lenovo Legion 5 Pro", brand: "Lenovo", category: "laptops", price: 19500000, specs: "Ryzen 7, RTX 4060, 165Hz IPS", image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&auto=format&fit=crop&q=85" },
+      { id: 13, name: "Acer Aspire 7", brand: "Acer", category: "laptops", price: 8500000, specs: "Core i5-12450H, GTX 1650, 8GB RAM", image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=85" },
+      { id: 14, name: "iPad Pro 13 (M4)", brand: "Apple", category: "tablets", price: 15200000, specs: "OLED Ultra Retina, 256GB, Wi-Fi", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=85" },
+      { id: 15, name: "Samsung Galaxy Tab S9 Ultra", brand: "Samsung", category: "tablets", price: 14100000, specs: "14.6-inch Dynamic AMOLED 2X, S-Pen", image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&auto=format&fit=crop&q=85" },
+      { id: 16, name: "Xiaomi Pad 6", brand: "Redmi", category: "tablets", price: 3900000, specs: "11-inch 144Hz, Snapdragon 870", image: "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=600&auto=format&fit=crop&q=85" },
+      { id: 17, name: "JBL Charge 5", brand: "Honor", category: "accessories", price: 1900000, specs: "Portable Waterproof Bluetooth Speaker", image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&auto=format&fit=crop&q=85" },
+      { id: 18, name: "Sony WH-1000XM5", brand: "Apple", category: "accessories", price: 4300000, specs: "Wireless Noise Canceling Headphones", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=85" },
+      { id: 19, name: "MacBook Pro 16 M3 Max", brand: "Apple", category: "laptops", price: 34000000, specs: "36GB RAM, 1TB SSD, Space Black", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=85" },
+      { id: 20, name: "Samsung Galaxy S24+", brand: "Samsung", category: "smartphones", price: 10900000, specs: "256GB, Galaxy AI, Dynamic AMOLED", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=85" },
+      { id: 21, name: "Redmi K70 Pro", brand: "Redmi", category: "smartphones", price: 5800000, specs: "Snapdragon 8 Gen 3, 120W Fast Charge", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=85" },
+      { id: 22, name: "ASUS ZenBook 14", brand: "ASUS", category: "laptops", price: 13500000, specs: "OLED Touch Display, Core Ultra 7", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&auto=format&fit=crop&q=85" },
+      { id: 23, name: "HP Omen 16", brand: "HP", category: "laptops", price: 17800000, specs: "Ryzen 7, RTX 4070, 240Hz Display", image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=85" },
+      { id: 24, name: "Lenovo IdeaPad Slim 5", brand: "Lenovo", category: "laptops", price: 7900000, specs: "Ryzen 5, 16GB RAM, 512GB SSD", image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&auto=format&fit=crop&q=85" },
+      { id: 25, name: "Acer Predator Helios 16", brand: "Acer", category: "laptops", price: 21500000, specs: "Core i9, RTX 4080, Mini LED 250Hz", image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=85" },
+      { id: 26, name: "iPhone 15", brand: "Apple", category: "smartphones", price: 10200000, specs: "128GB, Blue Titanium, Dynamic Island", image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&auto=format&fit=crop&q=85" },
+      { id: 27, name: "Samsung Galaxy A55", brand: "Samsung", category: "smartphones", price: 4600000, specs: "128GB, Awesome Iceblue, Super AMOLED", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=85" },
+      { id: 28, name: "Honor X9b", brand: "Honor", category: "smartphones", price: 3700000, specs: "256GB, Ultra-Bounce Anti-Drop Display", image: "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&auto=format&fit=crop&q=85" },
+      { id: 29, name: "Apple Watch Series 9", brand: "Apple", category: "tablets", price: 6200000, specs: "41mm GPS, Starlight Aluminum", image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=600&auto=format&fit=crop&q=85" },
+      { id: 30, name: "Samsung Galaxy Watch 6 Classic", brand: "Samsung", category: "tablets", price: 5100000, specs: "47mm Bluetooth, Rotating Bezel", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=85" },
+      { id: 31, name: "Xiaomi Smart Band 8", brand: "Redmi", category: "accessories", price: 450000, specs: "AMOLED Screen, 150+ Sports Modes", image: "https://images.unsplash.com/photo-1510017803434-a899398421b3?w=600&auto=format&fit=crop&q=85" },
+      { id: 32, name: "Anker Power Bank 24000mAh", brand: "HP", category: "accessories", price: 1400000, specs: "140W Fast Charging, Smart Digital Display", image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=600&auto=format&fit=crop&q=85" }
+    ];
+
+    let cart = [];
+    let orders = [];
+    let currentCategory = 'all';
+    let currentBrand = 'all';
+    let searchQuery = '';
+    let selectedProductForModal = null;
+
+    function formatSum(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " so'm";
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      html.classList.toggle('light');
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        if(btn.dataset.cat === cat) {
+          btn.className = "cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm";
+        } else {
+          btn.className = "cat-pill px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-emerald-500";
+        }
+      });
+      renderProducts();
+    }
+
+    function setBrand(brand) {
+      currentBrand = brand;
+      document.querySelectorAll('.brand-pill').forEach(btn => {
+        if(btn.dataset.brand === brand) {
+          btn.className = "brand-pill px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white dark:bg-emerald-500 dark:text-slate-950 transition";
+        } else {
+          btn.className = "brand-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition";
+        }
+      });
+      renderProducts();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.toLowerCase().trim();
+      renderProducts();
+    }
+
+    function resetFilters() {
+      currentCategory = 'all';
+      currentBrand = 'all';
+      searchQuery = '';
+      document.getElementById('searchInputDesktop').value = '';
+      document.getElementById('searchInputMobile').value = '';
+      setCategory('all');
+      setBrand('all');
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      const emptyState = document.getElementById('emptyState');
+      const sortVal = document.getElementById('sortSelect').value;
+
+      let filtered = products.filter(p => {
+        const matchCat = currentCategory === 'all' || p.category === currentCategory;
+        const matchBrand = currentBrand === 'all' || p.brand === currentBrand;
+        const matchSearch = p.name.toLowerCase().includes(searchQuery) || p.specs.toLowerCase().includes(searchQuery);
+        return matchCat && matchBrand && matchSearch;
+      });
+
+      if(sortVal === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+      else if(sortVal === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+      else if(sortVal === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+      document.getElementById('resultsCount').innerText = `${filtered.length} ta mahsulot`;
+
+      if(filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(p => `
+        <div onclick="openProductModal(${p.id})" class="product-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 cursor-pointer flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center">
+              <img src="${p.image}" alt="${p.name}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-lg bg-slate-950/75 backdrop-blur-md text-white text-[10px] font-extrabold uppercase tracking-wider">${p.brand}</span>
+            </div>
+            <div class="p-3.5">
+              <h3 class="font-black text-sm sm:text-base text-slate-900 dark:text-white line-clamp-1 mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">${p.name}</h3>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mb-2">${p.specs}</p>
+            </div>
+          </div>
+          <div class="px-3.5 pb-3.5 flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800/70">
+            <div>
+              <div class="text-[11px] text-slate-400 line-through">${formatSum(Math.round(p.price * 1.12))}</div>
+              <div class="font-black text-sm sm:text-base text-emerald-600 dark:text-emerald-400">${formatSum(p.price)}</div>
+            </div>
+            <button onclick="event.stopPropagation(); addToCart(${p.id})" class="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition active:scale-90 shadow-sm shadow-emerald-600/20">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openProductModal(id) {
+      const p = products.find(x => x.id === id);
+      if(!p) return;
+      selectedProductForModal = p;
+
+      document.getElementById('modalBrandBadge').innerText = p.brand;
+      document.getElementById('modalTitle').innerText = p.name;
+      document.getElementById('modalPrice').innerText = formatSum(p.price).replace(" so'm", "");
+      document.getElementById('modalSpecs').innerText = p.specs;
+      document.getElementById('modalImageContainer').innerHTML = `<img src="${p.image}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" class="w-full h-full object-cover" />`;
+
+      document.getElementById('productModal').classList.remove('hidden');
+      document.getElementById('productModal').classList.add('flex');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.add('hidden');
+      document.getElementById('productModal').classList.remove('flex');
+    }
+
+    document.getElementById('modalAddToCartBtn').onclick = function() {
+      if(selectedProductForModal) {
+        addToCart(selectedProductForModal.id);
+        closeProductModal();
+      }
+    };
+
+    function addToCart(id) {
+      const p = products.find(x => x.id === id);
+      if(!p) return;
+      const existing = cart.find(x => x.id === id);
+      if(existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...p, qty: 1 });
+      }
+      updateCartUI();
+      openCart();
+    }
+
+    function updateCartUI() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      document.getElementById('cartCountBadge').innerText = totalCount;
+      document.getElementById('drawerCartCount').innerText = totalCount;
+      document.getElementById('cartTotalAmount').innerText = formatSum(totalPrice);
+
+      const trigger = document.getElementById('checkoutTriggerBtn');
+      if(cart.length > 0) {
+        trigger.removeAttribute('disabled');
+      } else {
+        trigger.setAttribute('disabled', 'true');
+      }
+
+      const container = document.getElementById('cartItemsContainer');
+      if(cart.length === 0) {
+        container.innerHTML = `<div class="text-center py-16 text-slate-400 text-sm">Savatchangiz bo'sh 🛒</div>`;
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <img src="${item.image}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" class="w-16 h-16 rounded-xl object-cover shrink-0" />
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-sm truncate">${item.name}</h4>
+            <div class="text-emerald-600 dark:text-emerald-400 font-extrabold text-xs mt-0.5">${formatSum(item.price)}</div>
+            <div class="flex items-center gap-2 mt-2">
+              <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-700 font-bold text-xs">-</button>
+              <span class="text-xs font-bold">${item.qty}</span>
+              <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-700 font-bold text-xs">+</button>
+            </div>
+          </div>
+          <button onclick="removeFromCart(${item.id})" class="p-2 text-slate-400 hover:text-red-500 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(x => x.id === id);
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0) {
+        cart = cart.filter(x => x.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(x => x.id !== id);
+      updateCartUI();
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.remove('hidden');
+      document.getElementById('cartDrawer').classList.add('flex');
+    }
+
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.add('hidden');
+      document.getElementById('cartDrawer').classList.remove('flex');
+    }
+
+    function openCheckoutModal() {
+      closeCart();
+      document.getElementById('checkoutForm').reset();
+      document.getElementById('checkoutForm').classList.remove('hidden');
+      document.getElementById('receiptView').classList.add('hidden');
+      document.getElementById('checkoutModalTitle').innerText = "Buyurtmani rasmiylashtirish";
+      document.getElementById('checkoutModal').classList.remove('hidden');
+      document.getElementById('checkoutModal').classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+      document.getElementById('checkoutModal').classList.remove('flex');
+    }
+
+    function submitOrder(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const payment = document.getElementById('custPayment').value;
+
+      const orderId = "#AST-" + Math.floor(1000 + Math.random() * 9000);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      const newOrder = {
+        id: orderId,
+        date: new Date().toLocaleString(),
+        name, phone, payment,
+        items: [...cart],
+        total: totalPrice
+      };
+
+      orders.unshift(newOrder);
+      renderAdminOrders();
+
+      document.getElementById('checkoutForm').classList.add('hidden');
+      document.getElementById('receiptView').classList.remove('hidden');
+      document.getElementById('checkoutModalTitle').innerText = "Elektron Chek";
+      document.getElementById('receiptOrderId').innerText = orderId;
+
+      document.getElementById('receiptDetails').innerHTML = `
+        <div><b>Xaridor:</b> ${name}</div>
+        <div><b>Telefon:</b> ${phone}</div>
+        <div><b>To'lov turi:</b> ${payment}</div>
+        <div><b>Jami summa:</b> ${formatSum(totalPrice)}</div>
+      `;
+
+      document.getElementById('receiptQrSvg').innerHTML = `
+        <rect width="100" height="100" fill="#fff"/>
+        <rect x="10" y="10" width="30" height="30" fill="#0F172A"/>
+        <rect x="60" y="10" width="30" height="30" fill="#0F172A"/>
+        <rect x="10" y="60" width="30" height="30" fill="#0F172A"/>
+        <rect x="45" y="45" width="15" height="15" fill="#0F172A"/>
+        <rect x="70" y="65" width="20" height="20" fill="#0F172A"/>
+      `;
+
+      cart = [];
+      updateCartUI();
+    }
+
+    function openAdminModal() {
+      renderAdminOrders();
+      renderAdminStats();
+      document.getElementById('adminModal').classList.remove('hidden');
+      document.getElementById('adminModal').classList.add('flex');
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.add('hidden');
+      document.getElementById('adminModal').classList.remove('flex');
+    }
+
+    function switchAdminTab(tab) {
+      document.getElementById('adminTabOrders').classList.add('hidden');
+      document.getElementById('adminTabStats').classList.add('hidden');
+      document.getElementById('adminTabAddProduct').classList.add('hidden');
+
+      document.getElementById('tabBtnOrders').className = "py-3 border-b-2 border-transparent text-slate-500";
+      document.getElementById('tabBtnStats').className = "py-3 border-b-2 border-transparent text-slate-500";
+      document.getElementById('tabBtnAdd').className = "py-3 border-b-2 border-transparent text-slate-500";
+
+      if(tab === 'orders') {
+        document.getElementById('adminTabOrders').classList.remove('hidden');
+        document.getElementById('tabBtnOrders').className = "py-3 border-b-2 border-emerald-600 text-emerald-600 font-bold";
+      } else if(tab === 'stats') {
+        document.getElementById('adminTabStats').classList.remove('hidden');
+        document.getElementById('tabBtnStats').className = "py-3 border-b-2 border-emerald-600 text-emerald-600 font-bold";
+        renderAdminStats();
+      } else if(tab === 'addProduct') {
+        document.getElementById('adminTabAddProduct').classList.remove('hidden');
+        document.getElementById('tabBtnAdd').className = "py-3 border-b-2 border-emerald-600 text-emerald-600 font-bold";
+      }
+    }
+
+    function renderAdminOrders() {
+      const container = document.getElementById('adminOrdersList');
+      if(orders.length === 0) {
+        container.innerHTML = `<div class="text-center py-12 text-slate-400 text-sm">Hozircha buyurtmalar yo'q</div>`;
+        return;
+      }
+      container.innerHTML = orders.map(o => `
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+          <div class="flex items-center justify-between font-bold">
+            <span class="text-emerald-600 dark:text-emerald-400 text-sm">${o.id}</span>
+            <span class="text-slate-400">${o.date}</span>
+          </div>
+          <div><b>Ism:</b> ${o.name} | <b>Tel:</b> ${o.phone}</div>
+          <div><b>To'lov:</b> ${o.payment}</div>
+          <div class="font-bold text-slate-900 dark:text-white">Jami: ${formatSum(o.total)}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderAdminStats() {
+      const totalRev = orders.reduce((sum, o) => sum + o.total, 0);
+      document.getElementById('statTotalOrders').innerText = orders.length + " ta";
+      document.getElementById('statTotalRevenue').innerText = formatSum(totalRev);
+      document.getElementById('statTotalProducts').innerText = products.length + " ta";
+    }
+
+    function addNewProduct(e) {
+      e.preventDefault();
+      const name = document.getElementById('newProdName').value;
+      const category = document.getElementById('newProdCategory').value;
+      const brand = document.getElementById('newProdBrand').value;
+      const price = parseInt(document.getElementById('newProdPrice').value);
+      const image = document.getElementById('newProdImage').value;
+      const specs = document.getElementById('newProdSpecs').value;
+
+      const newP = {
+        id: products.length + 1,
+        name, category, brand, price, image, specs
+      };
+
+      products.unshift(newP);
+      renderProducts();
+      alert("Mahsulot muvaffaqiyatli qo'shildi!");
+      e.target.reset();
+      switchAdminTab('orders');
+    }
+
+    window.onload = function() {
+      renderProducts();
+    };
+  </script>
+
+</body>
+</html>
